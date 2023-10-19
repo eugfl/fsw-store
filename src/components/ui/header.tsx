@@ -3,7 +3,6 @@ import {
   ListOrderedIcon,
   LogInIcon,
   MenuIcon,
-  PercentCircleIcon,
   PercentIcon,
   ShoppingCartIcon,
 } from "lucide-react";
