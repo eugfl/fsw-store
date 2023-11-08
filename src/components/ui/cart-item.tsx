@@ -56,7 +56,7 @@ const CartItem = ({ product }: CartItemProps) => {
               </p>
             )}
           </div>
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-2">
             <Button
               size="icon"
               variant="outline"
