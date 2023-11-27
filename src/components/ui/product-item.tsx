@@ -41,7 +41,6 @@ const ProductItem = ({ product, className }: ProductItemProps) => {
               <p className="truncate font-semibold">
                 R$ {product.totalPrice.toFixed(2)}
               </p>
-
               <p className="truncate text-xs line-through opacity-75">
                 R$ {Number(product.basePrice).toFixed(2)}
               </p>
