@@ -1,41 +1,36 @@
 import { ProductWithTotalPrice } from "@/helpers/product";
 import Image from "next/image";
-import Link from "next/link";
-import DiscountBadge from "./discount-badge";
-import { cn } from "@/lib/utils";
-
+import { Badge } from "./badge";
+import { ArrowDownIcon } from "lucide-react";
 interface ProductItemProps {
   product: ProductWithTotalPrice;
-  className?: string;
 }
-
-const ProductItem = ({ product, className }: ProductItemProps) => {
+const ProductItem = ({ product }: ProductItemProps) => {
   return (
-    <Link
-      href={`/product/${product.slug}`}
-      className={cn("flex min-w-[156px] flex-col gap-4", className)}
-    >
+    <div className="flex min-w-[156px] flex-col gap-4">
       <div className="relative flex aspect-square w-full items-center justify-center rounded-lg bg-accent">
         <Image
           src={product.imageUrls[0]}
           height={0}
           width={0}
           sizes="100vw"
-          className="h-auto max-h-[70%] w-auto max-w-[80%] object-contain"
+          className="h-auto max-h-[70%] w-auto max-w-[80%]"
+          style={{
+            objectFit: "contain",
+          }}
           alt={product.name}
         />
-
         {product.discountPercentage > 0 && (
-          <DiscountBadge className="absolute left-3 top-3">
-            {product.discountPercentage}
-          </DiscountBadge>
+          <Badge className="absolute left-3 top-3 px-2 py-[2px] ">
+            <ArrowDownIcon size={14} /> {product.discountPercentage}%
+          </Badge>
         )}
       </div>
 
       <div className="flex flex-col gap-1">
         <p className="truncate text-sm">{product.name}</p>
 
-        <div className="flex items-center gap-2 ">
+        <div className="flex items-center gap-2">
           {product.discountPercentage > 0 ? (
             <>
               <p className="truncate font-semibold">
@@ -53,7 +48,7 @@ const ProductItem = ({ product, className }: ProductItemProps) => {
           )}
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 export default ProductItem;
