@@ -5,6 +5,7 @@ import {
   ListOrderedIcon,
   LogInIcon,
   LogOutIcon,
+  LucidePackageSearch,
   MenuIcon,
   PercentIcon,
   ShoppingCartIcon,
@@ -96,6 +97,18 @@ const Header = () => {
                 >
                   <HomeIcon size={16} />
                   Inicio
+                </Button>
+              </Link>
+            </SheetClose>
+
+            <SheetClose asChild>
+              <Link href="/orders">
+                <Button
+                  variant="outline"
+                  className="w-full justify-start gap-2"
+                >
+                  <LucidePackageSearch size={16} />
+                  Meus pedidos
                 </Button>
               </Link>
             </SheetClose>
