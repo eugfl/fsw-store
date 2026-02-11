@@ -30,43 +30,52 @@ export default async function Home() {
   });
 
   return (
-    <div className="flex flex-col gap-6 py-6">
+    <div className="flex flex-col gap-8 py-6">
+      {/* Hero Banner */}
       <PromoBanner
         src="/banner-home-01.png"
         alt="Até 55% de desconto esse mês!"
       />
 
+      {/* Categories */}
       <div className="px-5 lg:px-8">
         <Categories />
       </div>
 
-      <div className="space-y-3">
+      {/* Banner Grid - Kabum Style */}
+      <div className="grid grid-cols-1 gap-4 px-5 md:grid-cols-2 lg:px-8">
+        <div className="overflow-hidden rounded-lg">
+          <PromoBanner
+            src="/banner-home-02.png"
+            alt="Até 55% de desconto em mouses!"
+          />
+        </div>
+        <div className="overflow-hidden rounded-lg">
+          <PromoBanner
+            src="/banner-home-03.png"
+            alt="Até 20% de desconto em fones!"
+          />
+        </div>
+      </div>
+
+      {/* Deals Section */}
+      <div className="space-y-4">
         <div className="px-5 lg:px-8">
           <SectionTitle>Ofertas</SectionTitle>
         </div>
         <ProductList products={deals} />
       </div>
 
-      <PromoBanner
-        src="/banner-home-02.png"
-        alt="Até 55% de desconto em mouses!"
-      />
-
-      <div className="space-y-3">
+      {/* Keyboards Section */}
+      <div className="space-y-4">
         <div className="px-5 lg:px-8">
           <SectionTitle>Teclados</SectionTitle>
         </div>
         <ProductList products={keyboards} />
       </div>
 
-      <div>
-        <PromoBanner
-          src="/banner-home-03.png"
-          alt="Até 20% de desconto em fones!"
-        />
-      </div>
-
-      <div className="space-y-3">
+      {/* Mouses Section */}
+      <div className="space-y-4">
         <div className="px-5 lg:px-8">
           <SectionTitle>Mouses</SectionTitle>
         </div>
