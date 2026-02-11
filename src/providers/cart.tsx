@@ -9,12 +9,9 @@ export interface CartProduct extends ProductWithTotalPrice {
 
 interface ICartContext {
   products: CartProduct[];
-  cartTotalPrice: number;
-  cartBasePrice: number;
-  cartTotalDiscount: number;
   total: number;
   subtotal: number;
-  totaldiscount: number;
+  totalDiscount: number;
   addProductsToCart: (product: CartProduct) => void;
   decreaseProductQuantity: (productId: string) => void;
   increaseProductQuantity: (productId: string) => void;
@@ -23,16 +20,13 @@ interface ICartContext {
 
 export const CartContext = createContext<ICartContext>({
   products: [],
-  cartTotalPrice: 0,
-  cartBasePrice: 0,
-  cartTotalDiscount: 0,
   total: 0,
   subtotal: 0,
-  totaldiscount: 0,
-  addProductsToCart: () => {},
-  decreaseProductQuantity: () => {},
-  increaseProductQuantity: () => {},
-  removeProductFromCart: () => {},
+  totalDiscount: 0,
+  addProductsToCart: () => { },
+  decreaseProductQuantity: () => { },
+  increaseProductQuantity: () => { },
+  removeProductFromCart: () => { },
 });
 
 const CartProvider = ({ children }: { children: ReactNode }) => {
@@ -62,7 +56,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     }, 0);
   }, [products]);
 
-  const totaldiscount = subtotal - total;
+  const totalDiscount = subtotal - total;
 
   const addProductsToCart = (product: CartProduct) => {
     // se o produto já estiver no carrinho, apenas aumente a sua quantidade
@@ -138,12 +132,9 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
       value={{
         products,
         addProductsToCart,
-        cartTotalPrice: 0,
-        cartBasePrice: 0,
-        cartTotalDiscount: 0,
         total,
         subtotal,
-        totaldiscount,
+        totalDiscount,
         decreaseProductQuantity,
         increaseProductQuantity,
         removeProductFromCart,

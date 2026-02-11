@@ -11,24 +11,30 @@ import { createCheckout } from "@/actions/checkout";
 import { loadStripe } from "@stripe/stripe-js";
 import { createOrder } from "@/actions/order";
 import { useSession } from "next-auth/react";
+import { APP_CONFIG } from "@/config/app.config";
 
 const Cart = () => {
   const { data } = useSession();
-  const { products, total, subtotal, totaldiscount } = useContext(CartContext);
+  const { products, total, subtotal, totalDiscount } = useContext(CartContext);
 
   const handleFinishPurchaseClick = async () => {
     if (!data?.user) {
-      //TODO: redirecionar para o login
+      // TODO: redirecionar para o login
       return;
     }
 
-    const order = await createOrder(products, (data?.user as any).id);
+    // Type-safe user ID access
+    const userId = (data.user as { id?: string }).id;
+    if (!userId) {
+      console.error("User ID not found");
+      return;
+    }
+
+    const order = await createOrder(products, userId);
 
     const checkout = await createCheckout(products, order.id);
 
     const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
-
-    // Criar pedido no banco
 
     stripe?.redirectToCheckout({
       sessionId: checkout.id,
@@ -42,7 +48,7 @@ const Cart = () => {
         variant="outline"
       >
         <ShoppingCartIcon size={16} />
-        Carrinho
+        {APP_CONFIG.ui.cart}
       </Badge>
 
       <Separator />
@@ -59,7 +65,7 @@ const Cart = () => {
               ))
             ) : (
               <p className="text-center font-semibold">
-                Carrinho vazio. Vamos às compras?!
+                {APP_CONFIG.ui.emptyCart}
               </p>
             )}
           </div>
@@ -70,22 +76,22 @@ const Cart = () => {
         <div className="flex flex-col gap-3">
           <Separator />
           <div className="flex items-center justify-between text-xs">
-            <p>Subtotal</p>
+            <p>{APP_CONFIG.ui.subtotal}</p>
             <p>R$ {subtotal.toFixed(2)}</p>
           </div>
           <Separator />
           <div className="flex items-center justify-between text-xs">
-            <p>Entrega</p>
-            <p>GRÁTIS</p>
+            <p>{APP_CONFIG.ui.shipping}</p>
+            <p>{APP_CONFIG.ui.freeShipping}</p>
           </div>
           <Separator />
           <div className="flex items-center justify-between text-xs">
-            <p>Desconto</p>
-            <p>- R$ {totaldiscount.toFixed(2)}</p>
+            <p>{APP_CONFIG.ui.discount}</p>
+            <p>- R$ {totalDiscount.toFixed(2)}</p>
           </div>
           <Separator />
           <div className="flex items-center justify-between text-sm font-bold">
-            <p>Total</p>
+            <p>{APP_CONFIG.ui.total}</p>
             <p>R$ {total.toFixed(2)}</p>
           </div>
 
@@ -93,7 +99,7 @@ const Cart = () => {
             className="mt-7 font-bold uppercase"
             onClick={handleFinishPurchaseClick}
           >
-            Finalizar compra
+            {APP_CONFIG.ui.finishPurchase}
           </Button>
         </div>
       )}
