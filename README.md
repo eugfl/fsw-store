@@ -109,7 +109,7 @@ Este projeto é um **showcase de portfólio** demonstrando minha capacidade de c
 
 ```bash
 # Clonar repositório
-git clone https://github.com/seuusuario/fsw-store.git
+git clone https://github.com/eugfl/fsw-store.git
 cd fsw-store
 
 # Instalar dependências
@@ -140,41 +140,6 @@ Veja `.env.example` para todas as variáveis necessárias. Variáveis principais
 - `NEXTAUTH_SECRET` - Secret aleatório para NextAuth
 - `STRIPE_SECRET_KEY` & `NEXT_PUBLIC_STRIPE_PUBLIC_KEY` - Chaves API Stripe
 - `HOST_URL` - URL da aplicação
-
-## 🚀 Deploy
-
-### Vercel + Supabase (Recomendado)
-
-1. **Criar Projeto Supabase:**
-
-   - Acesse [supabase.com](https://supabase.com)
-   - Crie novo projeto
-   - Copie DATABASE_URL de Settings > Database
-
-2. **Deploy na Vercel:**
-
-   ```bash
-   # Instalar Vercel CLI
-   npm i -g vercel
-
-   # Deploy
-   vercel
-   ```
-
-3. **Configurar Variáveis de Ambiente:**
-
-   - Adicione todas as variáveis do `.env.example` no Dashboard Vercel
-   - Use valores de produção para chaves Stripe
-   - Configure `HOST_URL` para sua URL Vercel
-
-4. **Executar Migrations:**
-
-   ```bash
-   # Nas configurações do projeto Vercel, adicione comando de build:
-   npx prisma migrate deploy && next build
-   ```
-
-Veja [DEPLOY.md](./DEPLOY.md) para instruções detalhadas de deployment.
 
 ## 📚 O Que Este Projeto Demonstra
 
