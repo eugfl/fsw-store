@@ -96,8 +96,6 @@ Este projeto é um **showcase de portfólio** demonstrando minha capacidade de c
 - Gradientes de categoria customizados
 - Layout inspirado na Kabum
 
-## 🛠️ Começando
-
 ### Pré-requisitos
 
 - Node.js 18+
@@ -141,58 +139,6 @@ Veja `.env.example` para todas as variáveis necessárias. Variáveis principais
 - `STRIPE_SECRET_KEY` & `NEXT_PUBLIC_STRIPE_PUBLIC_KEY` - Chaves API Stripe
 - `HOST_URL` - URL da aplicação
 
-## 📚 O Que Este Projeto Demonstra
-
-### Habilidades de Engenharia de Software
-
-**Práticas de Código Limpo**
-
-- Princípios SOLID aplicados
-- DRY (Don't Repeat Yourself)
-- Tratamento de erros abrangente
-- Validação de entrada com Zod
-- Type safety com TypeScript
-
-**Padrões Modernos de React**
-
-- Server Components para performance
-- Client Components para interatividade
-- Custom hooks para lógica reutilizável
-- Context API para gerenciamento de estado
-- Atualizações otimistas de UI
-
-**Design de Banco de Dados**
-
-- Design de schema normalizado
-- Relacionamentos apropriados (1:N, N:M)
-- Migrations para controle de versão
-- Melhores práticas Prisma ORM
-
-**Melhores Práticas de Segurança**
-
-- Autenticação OAuth 2.0
-- Gerenciamento de variáveis de ambiente
-- Validação e sanitização de entrada
-- Processamento seguro de pagamentos
-- Verificação de existência de produtos
-
-### Pensamento de Produto
-
-**Experiência do Usuário**
-
-- Navegação intuitiva
-- Design responsivo
-- Estados de carregamento e feedback
-- Mensagens de erro
-- Placeholders visuais
-
-**Considerações de Escalabilidade**
-
-- Arquitetura modular
-- Regras de negócio configuráveis
-- Padrões de design extensíveis
-- Otimizações de performance
-
 ## 🔮 Melhorias Futuras
 
 Este projeto pode ser estendido com:
@@ -208,34 +154,8 @@ Este projeto pode ser estendido com:
 - [ ] Recomendações de produtos (ML)
 - [ ] Progressive Web App (PWA)
 
-## 📊 Métricas Técnicas
-
-- **Cobertura de Tipos:** 95%+
-- **Tempo de Build:** ~15s
-- **Tamanho do Bundle:** Otimizado com Next.js
-- **Tratamento de Erros:** Abrangente
-- **Documentação:** Completa
-
-## 👨‍💻 Sobre o Desenvolvedor
-
-Este projeto foi construído por **Gabriel Figueiredo** como demonstração de capacidades de desenvolvimento full-stack. Ele mostra:
-
-- Forte entendimento de arquitetura de software
-- Capacidade de integrar serviços de terceiros
-- Foco em qualidade e manutenibilidade de código
-- Abordagem de desenvolvimento orientada a produto
-- Expertise em desenvolvimento web moderno
-
-## 📄 Licença
-
-Este projeto é open source e disponível sob a Licença MIT.
-
-## 🤝 Contato
-
-Para consultas sobre este projeto ou oportunidades de colaboração:
-
 - **Portfólio:** https://gabrielfigueiredodev.shardweb.app/
-- **LinkedIn:** https://www.linkedin.com/in/gabriel-figueiredo-de-lima
+- **LinkedIn:** https://www.linkedin.com/in/gabriel-figueiredo-lima
 - **Email:** gabrielfigueriedolima911@gmail.com
 
 ---
