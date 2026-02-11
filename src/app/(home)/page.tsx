@@ -35,6 +35,7 @@ export default async function Home() {
       <PromoBanner
         src="/banner-home-01.png"
         alt="Até 55% de desconto esse mês!"
+        placeholderType="hero"
       />
 
       {/* Categories */}
@@ -48,12 +49,14 @@ export default async function Home() {
           <PromoBanner
             src="/banner-home-02.png"
             alt="Até 55% de desconto em mouses!"
+            placeholderType="mouses"
           />
         </div>
         <div className="overflow-hidden rounded-lg">
           <PromoBanner
             src="/banner-home-03.png"
             alt="Até 20% de desconto em fones!"
+            placeholderType="headphones"
           />
         </div>
       </div>
