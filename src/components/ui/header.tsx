@@ -24,6 +24,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 import { Separator } from "./separator";
 import Link from "next/link";
 import Cart from "./cart";
+import { APP_CONFIG } from "@/config/app.config";
 
 const Header = () => {
   const { status, data } = useSession();
@@ -45,7 +46,7 @@ const Header = () => {
 
         <SheetContent side="left">
           <SheetHeader className="text-left text-lg font-semibold">
-            Menu
+            {APP_CONFIG.ui.menu}
           </SheetHeader>
 
           {status === "authenticated" && data?.user && (
@@ -59,7 +60,7 @@ const Header = () => {
                 </Avatar>
                 <div className="flex flex-col">
                   <p className="font-medium">{data.user.name}</p>
-                  <p className="text-sm opacity-75">Boas Compras!</p>
+                  <p className="text-sm opacity-75">{APP_CONFIG.ui.welcomeMessage}</p>
                 </div>
               </div>
               <Separator />
@@ -74,7 +75,7 @@ const Header = () => {
                 className="w-full justify-start gap-2"
               >
                 <LogInIcon size={16} />
-                Fazer Login
+                {APP_CONFIG.ui.login}
               </Button>
             )}
 
@@ -85,7 +86,7 @@ const Header = () => {
                 className="w-full justify-start gap-2"
               >
                 <LogOutIcon size={16} />
-                Fazer Logout
+                {APP_CONFIG.ui.logout}
               </Button>
             )}
 
@@ -96,7 +97,7 @@ const Header = () => {
                   className="w-full justify-start gap-2"
                 >
                   <HomeIcon size={16} />
-                  Inicio
+                  {APP_CONFIG.ui.home}
                 </Button>
               </Link>
             </SheetClose>
@@ -108,7 +109,7 @@ const Header = () => {
                   className="w-full justify-start gap-2"
                 >
                   <LucidePackageSearch size={16} />
-                  Meus pedidos
+                  {APP_CONFIG.ui.orders}
                 </Button>
               </Link>
             </SheetClose>
@@ -120,7 +121,7 @@ const Header = () => {
                   className="w-full justify-start gap-2"
                 >
                   <PercentIcon size={16} />
-                  Ofertas
+                  {APP_CONFIG.ui.deals}
                 </Button>
               </Link>
             </SheetClose>
@@ -132,7 +133,7 @@ const Header = () => {
                   className="w-full justify-start gap-2"
                 >
                   <ListOrderedIcon size={16} />
-                  Catálogo
+                  {APP_CONFIG.ui.catalog}
                 </Button>
               </Link>
             </SheetClose>
@@ -142,7 +143,7 @@ const Header = () => {
 
       <Link href="/">
         <h1 className="text-lg font-semibold">
-          <span className="text-primary">FSW</span> Store
+          <span className="text-primary">{APP_CONFIG.name}</span>
         </h1>
       </Link>
 
