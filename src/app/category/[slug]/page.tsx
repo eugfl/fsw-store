@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import ProductItem from "@/components/ui/product-item";
 import { CATEGORY_ICON } from "@/constants/category-icons";
-import { computeProductTotalPrice } from "@/helpers/product";
+import { serializeProduct } from "@/helpers/product";
 import { prismaClient } from "@/lib/prisma";
 
 const CategoryProducts = async ({ params }: any) => {
@@ -28,11 +28,11 @@ const CategoryProducts = async ({ params }: any) => {
         {category.name}
       </Badge>
 
-      <div className="grid grid-cols-2 gap-8">
+      <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
         {category.products.map((product) => (
           <ProductItem
             key={product.id}
-            product={computeProductTotalPrice(product)}
+            product={serializeProduct(product)}
           />
         ))}
       </div>
