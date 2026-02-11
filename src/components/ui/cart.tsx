@@ -18,27 +18,43 @@ const Cart = () => {
   const { products, total, subtotal, totalDiscount } = useContext(CartContext);
 
   const handleFinishPurchaseClick = async () => {
+    // Validar autenticação do usuário
     if (!data?.user) {
+      console.warn("[CART] Usuário não autenticado. Redirecionamento necessário.");
       // TODO: redirecionar para o login
       return;
     }
 
-    // Type-safe user ID access
-    const userId = (data.user as { id?: string }).id;
-    if (!userId) {
-      console.error("User ID not found");
+    // Type-safe user ID access sem casting inseguro
+    const user = data.user as { id?: string; email?: string | null };
+
+    if (!user.id) {
+      console.error("[CART] ID do usuário não encontrado na sessão");
       return;
     }
 
-    const order = await createOrder(products, userId);
+    try {
+      // Criar pedido
+      const order = await createOrder(products, user.id);
 
-    const checkout = await createCheckout(products, order.id);
+      // Criar sessão de checkout no Stripe
+      const checkout = await createCheckout(products, order.id);
 
-    const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
+      // Carregar Stripe e redirecionar
+      const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
-    stripe?.redirectToCheckout({
-      sessionId: checkout.id,
-    });
+      if (!stripe) {
+        console.error("[CART] Falha ao carregar Stripe");
+        return;
+      }
+
+      await stripe.redirectToCheckout({
+        sessionId: checkout.id,
+      });
+    } catch (error) {
+      console.error("[CART] Erro ao finalizar compra:", error);
+      // TODO: Mostrar mensagem de erro para o usuário
+    }
   };
 
   return (
