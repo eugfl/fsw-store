@@ -28,10 +28,8 @@ const CartItem = ({ product }: CartItemProps) => {
   };
 
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between gap-4">
       <div className="flex items-center gap-4">
-        {/* PARTE DIREITA */}
-
         <div className="flex h-[77px] w-[77px] items-center justify-center rounded-lg bg-accent">
           <Image
             src={product.imageUrls[0]}
@@ -43,12 +41,12 @@ const CartItem = ({ product }: CartItemProps) => {
           />
         </div>
 
-        <div className="flex flex-col">
-          <p className="text-xs">{product.name}</p>
+        <div className="flex flex-col gap-1">
+          <p className="text-xs font-medium">{product.name}</p>
 
           <div className="flex items-center gap-2">
-            <p className="text-sm font-bold">
-              R${product.totalPrice.toFixed(2)}
+            <p className="text-sm font-bold text-primary">
+              R$ {product.totalPrice.toFixed(2)}
             </p>
             {product.discountPercentage > 0 && (
               <p className="text-xs line-through opacity-75">
@@ -66,7 +64,7 @@ const CartItem = ({ product }: CartItemProps) => {
               <ArrowLeftIcon size={16} />
             </Button>
 
-            <span className="text-xs">{product.quantity}</span>
+            <span className="text-xs font-medium">{product.quantity}</span>
 
             <Button
               size="icon"
@@ -80,7 +78,12 @@ const CartItem = ({ product }: CartItemProps) => {
         </div>
       </div>
 
-      <Button size="icon" variant="outline" onClick={handleRemoveProductClick}>
+      <Button
+        size="icon"
+        variant="outline"
+        onClick={handleRemoveProductClick}
+        className="hover:bg-destructive hover:text-destructive-foreground transition-colors"
+      >
         <TrashIcon size={16} />
       </Button>
     </div>
