@@ -2,31 +2,36 @@
 
 import { Button } from "@/components/ui/button";
 import DiscountBadge from "@/components/ui/discount-badge";
-import { ProductWithTotalPrice } from "@/helpers/product";
+import { ProductWithTotalPrice, SerializedProduct } from "@/helpers/product";
 import { CartContext } from "@/providers/cart";
 import { ArrowLeftIcon, ArrowRightIcon, TruckIcon } from "lucide-react";
 import { useContext, useState } from "react";
 import { APP_CONFIG } from "@/config/app.config";
 
 interface ProductInfoProps {
-  product: ProductWithTotalPrice;
+  product: ProductWithTotalPrice | SerializedProduct;
 }
 
 const ProductInfo = ({ product }: ProductInfoProps) => {
   const [quantity, setQuantity] = useState(1);
+  const MAX_QUANTITY = 99; // Quantidade máxima permitida
 
   const { addProductsToCart } = useContext(CartContext);
 
   const handleDecreaseQuantityClick = () => {
-    setQuantity((prev) => (prev === 1 ? prev : prev - 1));
+    setQuantity((prev) => (prev === 1 ? 1 : prev - 1));
   };
 
   const handleIncreaseQuantityClick = () => {
-    setQuantity((prev) => prev + 1);
+    setQuantity((prev) => (prev >= MAX_QUANTITY ? MAX_QUANTITY : prev + 1));
   };
 
   const handleAddToCartClick = () => {
-    addProductsToCart({ ...product, quantity });
+    addProductsToCart({
+      ...product,
+      basePrice: Number(product.basePrice),
+      quantity
+    });
   };
 
   return (

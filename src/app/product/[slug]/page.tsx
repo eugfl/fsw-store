@@ -1,7 +1,7 @@
 import { prismaClient } from "@/lib/prisma";
 import ProductImages from "./components/product-images";
 import ProductInfo from "./components/product-info";
-import { computeProductTotalPrice } from "@/helpers/product";
+import { serializeProduct, serializeProducts } from "@/helpers/product";
 import ProductList from "@/components/ui/product-list";
 import SectionTitle from "@/components/ui/section-title";
 import { APP_CONFIG } from "@/config/app.config";
@@ -39,10 +39,10 @@ const ProductDetailsPage = async ({
   return (
     <div className="flex flex-col gap-8 pb-8">
       <ProductImages imageUrls={product.imageUrls} name={product.name} />
-      <ProductInfo product={computeProductTotalPrice(product)} />
+      <ProductInfo product={serializeProduct(product)} />
       <div>
         <SectionTitle>{APP_CONFIG.ui.recommended}</SectionTitle>
-        <ProductList products={product.category.products} />
+        <ProductList products={serializeProducts(product.category.products)} />
       </div>
     </div>
   );

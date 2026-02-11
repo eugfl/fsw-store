@@ -1,6 +1,6 @@
 "use client";
 
-import { ProductWithTotalPrice } from "@/helpers/product";
+import { ProductWithTotalPrice, SerializedProduct } from "@/helpers/product";
 import Image from "next/image";
 import Link from "next/link";
 import DiscountBadge from "./discount-badge";
@@ -9,7 +9,7 @@ import { PackageIcon } from "lucide-react";
 import { useState } from "react";
 
 interface ProductItemProps {
-  product: ProductWithTotalPrice;
+  product: ProductWithTotalPrice | SerializedProduct;
   className?: string;
 }
 

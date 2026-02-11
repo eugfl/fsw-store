@@ -3,6 +3,7 @@ import { prismaClient } from "@/lib/prisma";
 import ProductList from "../../components/ui/product-list";
 import SectionTitle from "../../components/ui/section-title";
 import PromoBanner from "./components/promo-banner";
+import { serializeProducts } from "@/helpers/product";
 
 export default async function Home() {
   const deals = await prismaClient.product.findMany({
@@ -25,6 +26,38 @@ export default async function Home() {
     where: {
       category: {
         slug: "mouses",
+      },
+    },
+  });
+
+  const monitors = await prismaClient.product.findMany({
+    where: {
+      category: {
+        slug: "monitors",
+      },
+    },
+  });
+
+  const headphones = await prismaClient.product.findMany({
+    where: {
+      category: {
+        slug: "headphones",
+      },
+    },
+  });
+
+  const mousepads = await prismaClient.product.findMany({
+    where: {
+      category: {
+        slug: "mousepads",
+      },
+    },
+  });
+
+  const speakers = await prismaClient.product.findMany({
+    where: {
+      category: {
+        slug: "speakers",
       },
     },
   });
@@ -66,7 +99,7 @@ export default async function Home() {
         <div className="px-5 lg:px-8">
           <SectionTitle>Ofertas</SectionTitle>
         </div>
-        <ProductList products={deals} />
+        <ProductList products={serializeProducts(deals)} />
       </div>
 
       {/* Keyboards Section */}
@@ -74,7 +107,7 @@ export default async function Home() {
         <div className="px-5 lg:px-8">
           <SectionTitle>Teclados</SectionTitle>
         </div>
-        <ProductList products={keyboards} />
+        <ProductList products={serializeProducts(keyboards)} />
       </div>
 
       {/* Mouses Section */}
@@ -82,7 +115,39 @@ export default async function Home() {
         <div className="px-5 lg:px-8">
           <SectionTitle>Mouses</SectionTitle>
         </div>
-        <ProductList products={mouses} />
+        <ProductList products={serializeProducts(mouses)} />
+      </div>
+
+      {/* Monitors Section */}
+      <div className="space-y-4">
+        <div className="px-5 lg:px-8">
+          <SectionTitle>Monitores</SectionTitle>
+        </div>
+        <ProductList products={serializeProducts(monitors)} />
+      </div>
+
+      {/* Headphones Section */}
+      <div className="space-y-4">
+        <div className="px-5 lg:px-8">
+          <SectionTitle>Fones</SectionTitle>
+        </div>
+        <ProductList products={serializeProducts(headphones)} />
+      </div>
+
+      {/* Mousepads Section */}
+      <div className="space-y-4">
+        <div className="px-5 lg:px-8">
+          <SectionTitle>Mousepads</SectionTitle>
+        </div>
+        <ProductList products={serializeProducts(mousepads)} />
+      </div>
+
+      {/* Speakers Section */}
+      <div className="space-y-4">
+        <div className="px-5 lg:px-8">
+          <SectionTitle>Caixas de Som</SectionTitle>
+        </div>
+        <ProductList products={serializeProducts(speakers)} />
       </div>
     </div>
   );
