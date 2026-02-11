@@ -78,7 +78,7 @@ const Header = () => {
               </div>
             )}
 
-            <div className="mt-4 flex-col gap-3">
+            <div className="mt-4 flex flex-col gap-3">
               {status === "unauthenticated" && (
                 <Button
                   onClick={handleLoginClick}

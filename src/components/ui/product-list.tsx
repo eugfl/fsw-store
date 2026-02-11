@@ -6,12 +6,12 @@ interface ProductListProps {
 }
 const ProductList = ({ products }: ProductListProps) => {
   return (
-    <div className="flex w-full gap-4 overflow-x-auto px-5 [&::-webkit-scrollbar]:hidden">
+    <div className="flex w-full gap-4 overflow-x-auto px-5 pb-2">
       {products.map((product) => (
         <ProductItem
           key={product.id}
           product={computeProductTotalPrice(product)}
-          className="w-[156px]"
+          className="w-[156px] flex-shrink-0"
         />
       ))}
     </div>

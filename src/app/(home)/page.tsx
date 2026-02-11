@@ -36,12 +36,14 @@ export default async function Home() {
         alt="Até 55% de desconto esse mês!"
       />
 
-      <div className=" px-5">
+      <div className="px-5 lg:px-8">
         <Categories />
       </div>
 
-      <div>
-        <SectionTitle>Ofertas</SectionTitle>
+      <div className="space-y-3">
+        <div className="px-5 lg:px-8">
+          <SectionTitle>Ofertas</SectionTitle>
+        </div>
         <ProductList products={deals} />
       </div>
 
@@ -50,8 +52,10 @@ export default async function Home() {
         alt="Até 55% de desconto em mouses!"
       />
 
-      <div>
-        <SectionTitle>Teclados</SectionTitle>
+      <div className="space-y-3">
+        <div className="px-5 lg:px-8">
+          <SectionTitle>Teclados</SectionTitle>
+        </div>
         <ProductList products={keyboards} />
       </div>
 
@@ -62,8 +66,10 @@ export default async function Home() {
         />
       </div>
 
-      <div>
-        <SectionTitle>Mouses</SectionTitle>
+      <div className="space-y-3">
+        <div className="px-5 lg:px-8">
+          <SectionTitle>Mouses</SectionTitle>
+        </div>
         <ProductList products={mouses} />
       </div>
     </div>

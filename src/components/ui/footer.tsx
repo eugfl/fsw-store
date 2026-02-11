@@ -114,9 +114,10 @@ const Footer = () => {
                 href="https://gabrielfigueiredodev.shardweb.app/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold text-primary transition-colors hover:underline"
+                className="flex items-center gap-2 font-semibold text-primary transition-colors hover:underline"
               >
-                Gabriel Figueiredo
+                <img className="h-5 w-5 rounded-full" src="/logo-gf.png" alt="Gabriel Figueiredo Logo" />
+                <span>Gabriel Figueiredo</span>
               </a>
             </div>
           </div>
