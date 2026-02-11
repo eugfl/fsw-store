@@ -9,6 +9,7 @@ import {
   MenuIcon,
   PercentIcon,
   ShoppingCartIcon,
+  ShoppingBagIcon,
 } from "lucide-react";
 import { Button } from "./button";
 import { Card } from "./card";
@@ -36,7 +37,7 @@ const Header = () => {
     await signOut();
   };
   return (
-    <Card className="flex items-center justify-between p-[1.875rem]">
+    <Card className="flex items-center justify-between p-5 lg:px-8">
       <Sheet>
         <SheetTrigger asChild>
           <Button size="icon" variant="outline">
@@ -141,8 +142,9 @@ const Header = () => {
         </SheetContent>
       </Sheet>
 
-      <Link href="/">
-        <h1 className="text-lg font-semibold">
+      <Link href="/" className="flex items-center gap-2">
+        <ShoppingBagIcon className="h-6 w-6 text-primary" />
+        <h1 className="text-xl font-bold">
           <span className="text-primary">{APP_CONFIG.name}</span>
         </h1>
       </Link>
