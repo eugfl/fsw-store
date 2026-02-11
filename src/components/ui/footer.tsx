@@ -108,8 +108,16 @@ const Footer = () => {
             <p>
               © {currentYear} {APP_CONFIG.name}. Todos os direitos reservados.
             </p>
-            <div className="flex gap-6">
-              <span>Desenvolvido com ❤️</span>
+            <div className="flex items-center gap-2">
+              <span>Desenvolvido por</span>
+              <a
+                href="https://gabrielfigueiredodev.shardweb.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-primary transition-colors hover:underline"
+              >
+                Gabriel Figueiredo
+              </a>
             </div>
           </div>
         </div>
